@@ -1,0 +1,49 @@
+15 LIQUID FOoD COLORING SET
+FOOD
+COLORING
+FOOD
+COLORIN(G
+PINK
+ORANGE
+NET W
+0.25 I.oz (Gmnll
+NET W
+0.25 fL.oz (Gmll)
+FOOD
+COLORING
+'A0
+RED
+8
+1
+NET WT
+0.25 fL.0z (6ml)
+FOOD
+COLORING
+GRASS
+1
+(
+GREEN
+3
+NET W
+0.25 fL.oz (Gml)
+Gluten Free
+Nut Free
+Sugar Free
+Eggs Free
+Soy FREE
+Dairy Free
+{
+1
+0
+1
+8
+1
+1
+6
+4
+1
+8
+8
+9
+{
+6

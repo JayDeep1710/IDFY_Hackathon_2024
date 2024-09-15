@@ -1,0 +1,62 @@
+[
+    {
+      "name": "Amit Sharma",
+      "email": "amit.sharma123@example.in",
+      "phone_number": "+91-9876543210",
+      "address": {
+        "street": "45, MG Road",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "zip": "400001"
+      },
+      "aadhaar_number": "1234-5678-9101"
+    },
+    {
+      "name": "Neha Verma",
+      "email": "neha.verma99@example.in",
+      "phone_number": "+91-9123456789",
+      "address": {
+        "street": "22, JP Nagar",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "zip": "560078"
+      },
+      "aadhaar_number": "2345-6789-0123"
+    },
+    {
+      "name": "Rohit Singh",
+      "email": "rohit.singh84@example.in",
+      "phone_number": "+91-9988776655",
+      "address": {
+        "street": "12, Nehru Place",
+        "city": "New Delhi",
+        "state": "Delhi",
+        "zip": "110019"
+      },
+      "aadhaar_number": "3456-7890-1234"
+    },
+    {
+      "name": "Priya Patel",
+      "email": "priya.patel55@example.in",
+      "phone_number": "+91-9876512345",
+      "address": {
+        "street": "5, CG Road",
+        "city": "Ahmedabad",
+        "state": "Gujarat",
+        "zip": "380009"
+      },
+      "aadhaar_number": "4567-8901-2345"
+    },
+    {
+      "name": "Arjun Iyer",
+      "email": "arjun.iyer77@example.in",
+      "phone_number": "+91-7896541230",
+      "address": {
+        "street": "17, Anna Salai",
+        "city": "Chennai",
+        "state": "Tamil Nadu",
+        "zip": "600002"
+      },
+      "aadhaar_number": "5678-9012-3456"
+    }
+  ]  

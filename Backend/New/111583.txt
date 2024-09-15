@@ -1,0 +1,24 @@
+Flavor
+6n8
+Pepper
+Item Volume
+Io
+12.0 Fluid Ounces
+Dr
+Pepr
+R2A 0265
+I0
+I0
+I0
+Dr
+Pepper 
+Dr
+Pepper
+Dr
+Pepper
+Unit Count
+R2A O2 bnm
+I2a 0Z
+I2A 02 O55mU
+72.0 Fl Oz
+Dom
