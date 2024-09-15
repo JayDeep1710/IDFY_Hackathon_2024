@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* styles/globals.css */
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px #F75049, 0 0 20px #F75049, 0 0 30px #F75049, 0 0 40px #F75049;
+  }
+  20%, 24%, 55% {
+    opacity: 0.8;
+    text-shadow: none;
+  }
+}
+.glow-on-hover {
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.glow-on-hover:hover {
+  text-shadow: 0 0 10px #5EF6FF, 0 0 20px #5EF6FF, 0 0 30px #5EF6FF;
+}
+
+@keyframes fill {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.glow-on-hover2 {
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.glow-on-hover2:hover {
+  animation: fill 2s forwards, glow-text 0.3s forwards;
+  background: linear-gradient(to right, #5EF6FF, #5EF6FF);
+  background-size: 200% 100%;
+  color: white;
+}
+
+@keyframes glow-text {
+  0%, 100% {
+    text-shadow: 0 0 5px #5EF6FF, 0 0 10px #5EF6FF, 0 0 15px #5EF6FF, 0 0 20px #5EF6FF;
+    transform: scale(1.1);
+  }
+}
+
+
+/* styles/globals.css */
+
+/* Loader Styles */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #1DED83;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #555;
+  font-family: Arial, sans-serif;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
