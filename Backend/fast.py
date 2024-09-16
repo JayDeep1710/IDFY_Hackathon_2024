@@ -9,6 +9,7 @@ from texts import *
 from vision import *
 from score import *
 from fastapi.middleware.cors import CORSMiddleware
+import psycopg2
 
 
 app = FastAPI()
@@ -109,4 +110,31 @@ def analyze_text(text):
     d["score"] = calculate_risk_score(data,data_vol)
     return d
     
-# @app.post("sql")
+@app.post("sql")
+def get_database_as_text(host, dbname, user, password, query):
+    try:
+        connection = psycopg2.connect(
+            host=host,
+            dbname=dbname,
+            user=user,
+            password=password
+        )
+        cursor = connection.cursor()
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        result = "\n".join([str(row) for row in rows])
+        cursor.close()
+        connection.close()
+        d = process_text(result, model)
+        data_vol=""
+        if(len(d)<=1):
+            data_vol="small"
+        elif(len(d)==2):
+            data_vol="medium"
+        else :
+            data_vol="large"
+        d["score"] = calculate_risk_score(data,data_vol)
+        return d
+
+    except Exception as e:
+        return f"An error occurred: {e}"
