@@ -22,8 +22,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],  # You can specify methods like ["GET", "POST"] if necessary
-    allow_headers=["*"],  # You can specify headers if needed
+    allow_methods=["*"],  
+    allow_headers=["*"],  
 )
 
 class DownloadRequest(BaseModel):
@@ -75,26 +75,15 @@ def download_all_objects(bucket_name, aws_access_key_id, aws_secret_access_key, 
         region_name=aws_region
     )
 
-    # Select the bucket
     my_bucket = s3.Bucket(bucket_name)
-
-    # Download files into the specified directory
     for s3_object in my_bucket.objects.all():
-        # Get the key (file path) and filename
         key = s3_object.key
         path, filename = os.path.split(key)
-        
-        # Define the local file path
         local_file_path = os.path.join(download_dir, key)
-        
-        # Create the directory structure if it does not exist
         if not os.path.exists(os.path.dirname(local_file_path)):
             os.makedirs(os.path.dirname(local_file_path))
-        
-        # Only download files (not directories)
         if filename:
             try:
-                # Download the file
                 my_bucket.download_file(key, local_file_path)
                 print(f"Downloaded {key} to {local_file_path}")
             except botocore.exceptions.ClientError as e:
@@ -120,23 +109,4 @@ def analyze_text(text):
     d["score"] = calculate_risk_score(data,data_vol)
     return d
     
-# def download_files(request: DownloadRequest):
-#     try:
-#         download_all_objects(
-#             request.bucket_name,
-#             request.download_dir,
-#             request.aws_access_key_id,
-#             request.aws_secret_access_key,
-#             request.aws_region
-#         )
-#         return {"status": "success", "message": "Files downloaded successfully."}
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
-
-    
-    
-    
-    
-    
-# To run the FastAPI application, use the command:
-# uvicorn your_script_name:app --reload
+# @app.post("sql")
