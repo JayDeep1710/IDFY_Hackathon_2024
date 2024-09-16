@@ -1,5 +1,26 @@
 # IDFY_Hackathon_2024
+# Project
+This projects offers accurate identification and classification of Personally Identifiable Information (PII) within diverse data repositories.
+|High Level Diagram|
+|---------------------|
+| ![WhatsApp Image 2024-09-15 at 21 08 51](https://github.com/user-attachments/assets/661f1ba8-9161-42fe-a5ff-dba105126b0e)|
+```bash
+Currently We offer data ingestion from following data sources
+├── AWS S# Bucket  
+├── SQL server
+├── Local Folder
+└── Copy and Paste Text data
+
+We offer two interfaces
+├── Web Application  
+└── Command line application
+```
+
+# High Level Diagram
+
+
 # Web Application
+
 
 |Landing Page|Select Your Data|
 |---------------------|---------------------|
@@ -13,10 +34,10 @@
 |---------------------|---------------------|
 |![sc1](https://github.com/user-attachments/assets/5fb4c311-f0d7-461a-914a-3d4bec1ee3b4)|![sc8](https://github.com/user-attachments/assets/fc30642b-18de-4a31-b388-feb455208caa)|
 
-#CLI tool
+# CLI tool
 ![ter](https://github.com/user-attachments/assets/a73fa89f-ea80-4510-b4ac-1e7f94ad35f2)
 
-#Risk Score Calculation
+# Risk Score Calculation
 |||
 |---------------------|---------------------|
 |![WhatsApp Image 2024-09-14 at 16 44 18](https://github.com/user-attachments/assets/3ec975eb-deb1-49d3-bc01-5455f2e31e2f)|![WhatsApp Image 2024-09-14 at 16 43 57](https://github.com/user-attachments/assets/c2e6a4ae-ef66-4ba2-a7b0-dbaacf0f1b53)|
