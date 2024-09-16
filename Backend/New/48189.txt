@@ -1,8 +1,0 @@
-Package Information
-Bottle
-Viscosity
-1OW-30
-1
-HIOM 30 S
-Liquid Volume
-32.0 Fluid Ounces
