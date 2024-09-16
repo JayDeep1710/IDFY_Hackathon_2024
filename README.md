@@ -6,7 +6,7 @@ This projects offers accurate identification and classification of Personally Id
 | ![WhatsApp Image 2024-09-15 at 21 08 51](https://github.com/user-attachments/assets/661f1ba8-9161-42fe-a5ff-dba105126b0e)|
 ```bash
 Currently We offer data ingestion from following data sources
-├── AWS S# Bucket  
+├── AWS S3 Bucket  
 ├── SQL server
 ├── Local Folder
 └── Copy and Paste Text data
