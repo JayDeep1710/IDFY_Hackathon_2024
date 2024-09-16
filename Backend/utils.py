@@ -6,7 +6,7 @@ from gliner import GLiNER
 import time
 import threading
 import json
-from docx import Document
+
 import csv
 from vision import *
 from texts import *
@@ -56,69 +56,11 @@ def copy_files_by_extension(source_directory, doc_dest="Testing/text_files", ima
 
             elif file.endswith(tuple(code_extensions)):
                 shutil.copy(source_file_path, code_dest)
-                # print(f"Copied {file} to {code_dest}")
-
-# # Example usage
-# source_directory = "/path/to/source/folder"
-# doc_dest = "/path/to/destination/documents"
-# image_dest = "/path/to/destination/images"
-# code_dest = "/path/to/destination/code_files"
-
-# copy_files_by_extension(source_directory, doc_dest, image_dest, code_dest)
 
 
 
 
 
-
-#read CPP
-def read_cpp(folder_path):
-    cpp_files = glob.glob(os.path.join(folder_path, "*.cpp"))  # Find all .cpp files
-    text = ""
-    
-    for cpp_file in cpp_files:
-        with open(cpp_file, "r") as file:
-            cpp_code = file.read()  # Read the C++ code from the file
-            text += cpp_code + "\n"  # Append the C++ code to the text variable with a newline
-    return text
-
-
-#Read Python
-def read_python(folder_path):
-    cpp_files = glob.glob(os.path.join(folder_path, "*.py"))  # Find all .cpp files
-    text = ""
-    
-    for cpp_file in cpp_files:
-        with open(cpp_file, "r") as file:
-            cpp_code = file.read()  # Read the C++ code from the file
-            text += cpp_code + "\n"  # Append the C++ code to the text variable with a newline
-    return text
-
-
-#Read Java
-def read_java(folder_path):
-    cpp_files = glob.glob(os.path.join(folder_path, "*.java"))  # Find all .cpp files
-    text = ""
-    
-    for cpp_file in cpp_files:
-        with open(cpp_file, "r") as file:
-            cpp_code = file.read()  # Read the C++ code from the file
-            text += cpp_code + "\n"  # Append the C++ code to the text variable with a newline
-    return text
-
-
-#Read Docx files
-def read_docx(folder_path):
-    doc_files = glob.glob(os.path.join(folder_path, "*.docx"))  # Find all .docx files
-    text = ""
-    
-    for doc_file in doc_files:
-        # Open and read the .docx file
-        doc = Document(doc_file)
-        for para in doc.paragraphs:
-            text += para.text + "\n"  # Append each paragraph's text to the text variable with a newline
-    
-    return text
 
 
 #convert CSV file to text to process

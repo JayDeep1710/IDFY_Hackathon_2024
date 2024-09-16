@@ -1,5 +1,6 @@
 import glob
 import os
+from docx import Document
 
 
 labels = ["Date of Birth","credit card Number","API Key","Bank Account Number","aadhar number" ,"company", "booking number","age", "city", "country", "personally identifiable information", "driver licence", "person", "address", "email", "passport number", "Social Security Number", "phone number"]
@@ -30,6 +31,8 @@ def process_text(text, model):
     d = format_results(result)
     path_to_data["text"] = d
     return path_to_data
+
+
 #Read text files
 def read_text(model):
     folder_path = 'Testing/text_files'
@@ -43,5 +46,19 @@ def read_text(model):
             d = format_results(result)
             path_to_data[txt_file] = d
     return path_to_data
+
+
+#Read Docx files
+def read_docx(folder_path):
+    doc_files = glob.glob(os.path.join(folder_path, "*.docx"))  # Find all .docx files
+    text = ""
+    
+    for doc_file in doc_files:
+        # Open and read the .docx file
+        doc = Document(doc_file)
+        for para in doc.paragraphs:
+            text += para.text + "\n"  # Append each paragraph's text to the text variable with a newline
+    
+    return text
 
 

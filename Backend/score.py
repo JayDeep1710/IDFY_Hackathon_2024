@@ -1,7 +1,7 @@
 from code_text import *
 labels = ["Date of Birth","credit card Number","API Key","Bank Account Number","aadhar number" ,"company", "booking number","age", "city", "country", "personally identifiable information", "driver licence", "person", "address", "email", "passport number", "Social Security Number", "phone number"]
 
-# Define sensitivity levels for PII data
+
 pii_sensitivity = {
     "Date of Birth": 2,  
     "credit card Number": 3,  
@@ -23,10 +23,10 @@ pii_sensitivity = {
     "phone number": 2  # Medium
 }
 
-# Define compliance levels
+
 compliance_scores = {
-    'gdpr': 'partially_compliant',  # Partially Compliant
-    'ccpa': 'non_compliant'  # Non-Compliant
+    'gdpr': 'partially_compliant', 
+    'ccpa': 'non_compliant' 
 }
 
 # Define data volume
@@ -78,11 +78,4 @@ def calculate_risk_score(pii_data, data_vol):
     
     return get_score()
 
-# Example usage
-# pii_data = ['name', 'credit_card', 'health_record']
-# data_vol = 'large'  # Large volume of data
 
-
-# risk_score = calculate_risk_score(pii_data, data_vol, compliance_status, pii_sensitivity, compliance_values, weights)
-
-# print(f"Total Risk Score: {risk_score}")
