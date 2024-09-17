@@ -40,7 +40,7 @@ We offer two interfaces
 |---------------------|---------------------|
 |![sc1](https://github.com/user-attachments/assets/5fb4c311-f0d7-461a-914a-3d4bec1ee3b4)|![sc8](https://github.com/user-attachments/assets/fc30642b-18de-4a31-b388-feb455208caa)|
 
-# CLI tool
+# Command Line Application
 ![ter](https://github.com/user-attachments/assets/a73fa89f-ea80-4510-b4ac-1e7f94ad35f2)
 **Running Command line application**
 ```bash
