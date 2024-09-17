@@ -5,6 +5,10 @@ This projects offers accurate identification and classification of Personally Id
 |---------------------|
 | ![WhatsApp Image 2024-09-15 at 21 08 51](https://github.com/user-attachments/assets/661f1ba8-9161-42fe-a5ff-dba105126b0e)|
 ```bash
+
+Text Model : Finetuned Dliner model
+Vision Model : Finetuned Yolo v8 nano
+
 Currently We offer data ingestion from following data sources
 ├── AWS S3 Bucket  
 ├── SQL server
@@ -16,7 +20,7 @@ We offer two interfaces
 └── Command line application
 ```
 
-# High Level Diagram
+
 
 
 # Web Application
@@ -36,6 +40,14 @@ We offer two interfaces
 
 # CLI tool
 ![ter](https://github.com/user-attachments/assets/a73fa89f-ea80-4510-b4ac-1e7f94ad35f2)
+**Running Command line application**
+```bash
+cd backend
+```
+```bash
+python3 Test.py
+```
+For local folder search input the path as "Test".
 
 # Risk Score Calculation
 |||
