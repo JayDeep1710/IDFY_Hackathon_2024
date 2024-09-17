@@ -4,10 +4,12 @@ This projects offers accurate identification and classification of Personally Id
 |High Level Diagram|
 |---------------------|
 | ![WhatsApp Image 2024-09-15 at 21 08 51](https://github.com/user-attachments/assets/661f1ba8-9161-42fe-a5ff-dba105126b0e)|
+[Text Model: Finetuned Gliner model](https://aclanthology.org/2024.naacl-long.300.pdf)
+[Vision Model: Finetuned Yolo v8 nano](https://docs.ultralytics.com/modes/train/)
 ```bash
 
-Text Model : Finetuned Dliner model
-Vision Model : Finetuned Yolo v8 nano
+
+
 
 Currently We offer data ingestion from following data sources
 ├── AWS S3 Bucket  
