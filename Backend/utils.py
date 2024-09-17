@@ -11,6 +11,7 @@ import csv
 from vision import *
 from texts import *
 from visualize import *
+from code_text import *
 
 # Define different file extensions for each category
 doc_extensions = ['.txt','.doc', '.docx']
@@ -102,14 +103,6 @@ def search(i):
         print("\033[32m Searching for Personally Identifiable Information in Text files \033[0m")
         ###Text extraction
         extracted_dict = read_text(model)
-        # suppress_output()
-        # #passing the text in chunk size of 200
-        # results = predict_entities_in_chunks(model, extracted_text, labels, chunk_size=50)
-        # restore_output()
-        # suppress_output()
-        # restore_output()
-        # d = format_results(results)
-        # print_dict_in_color(d)
         for path, d in extracted_dict.items():
             file_name = path.split("/")[-1]
             print(f"In file \033[91m{file_name}\033[0m:")
@@ -118,8 +111,6 @@ def search(i):
             else:
                 print("\033[32mNo PII data found\033[0m")
                 
-                
-        
     if i==6:
         
         print("\033[32m Loading model... \033[0m")

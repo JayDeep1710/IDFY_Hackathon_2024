@@ -30,35 +30,35 @@ def read_json(model):
 
 #read CPP
 def read_cpp(folder_path):
-    cpp_files = glob.glob(os.path.join(folder_path, "*.cpp"))  # Find all .cpp files
+    cpp_files = glob.glob(os.path.join(folder_path, "*.cpp"))
     text = ""
     
     for cpp_file in cpp_files:
         with open(cpp_file, "r") as file:
-            cpp_code = file.read()  # Read the C++ code from the file
-            text += cpp_code + "\n"  # Append the C++ code to the text variable with a newline
+            cpp_code = file.read()
+            text += cpp_code + "\n"
     return text
 
 
 #Read Python
 def read_python(folder_path):
-    cpp_files = glob.glob(os.path.join(folder_path, "*.py"))  # Find all .cpp files
+    cpp_files = glob.glob(os.path.join(folder_path, "*.py"))
     text = ""
     
     for cpp_file in cpp_files:
         with open(cpp_file, "r") as file:
-            cpp_code = file.read()  # Read the C++ code from the file
-            text += cpp_code + "\n"  # Append the C++ code to the text variable with a newline
+            cpp_code = file.read() 
+            text += cpp_code + "\n"  
     return text
 
 
 #Read Java
 def read_java(folder_path):
-    cpp_files = glob.glob(os.path.join(folder_path, "*.java"))  # Find all .cpp files
+    cpp_files = glob.glob(os.path.join(folder_path, "*.java"))
     text = ""
     
     for cpp_file in cpp_files:
         with open(cpp_file, "r") as file:
-            cpp_code = file.read()  # Read the C++ code from the file
-            text += cpp_code + "\n"  # Append the C++ code to the text variable with a newline
+            cpp_code = file.read()
+            text += cpp_code + "\n"
     return text

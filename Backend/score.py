@@ -55,14 +55,9 @@ def calculate_risk_score(pii_data, data_vol):
     length=len(pii_data)+1
     total_pii_score = 0
     for data_type in pii_data:
-        # Get the sensitivity score for each PII data type
         sensitivity_score = pii_sensitivity.get(data_type, 0)
         total_pii_score += sensitivity_score
-        
-    # Average PII sensitivity score
     average_pii_score = total_pii_score / length
-    
-    # Data volume score
     volume_score = data_volume[data_vol]
     
 
