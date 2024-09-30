@@ -9,8 +9,13 @@ from texts import *
 from vision import *
 from score import *
 from fastapi.middleware.cors import CORSMiddleware
-import psycopg2
-
+import sqlalchemy
+import pandas as pd
+from risk_score import *
+# import psycopg2
+suppress_output()
+model = GLiNER.from_pretrained("urchade/gliner_mediumv2.1")
+restore_output()
 
 app = FastAPI()
 
@@ -43,9 +48,6 @@ def get_model(folder_path):
     image_folder = "Testing/image_files"
     count = count_images_in_folder(image_folder)
     code_folder = "Testing/code_files"
-    suppress_output()
-    model = GLiNER.from_pretrained("urchade/gliner_multi_pii-v1")
-    restore_output()
     extracted_text1 = read_text(model)
     extracted_text2 = read_json(model)
     extracted_text3={}
@@ -58,10 +60,12 @@ def get_model(folder_path):
         data_vol="medium"
     else :
         data_vol="large"
-    d["score"] = calculate_risk_score(data,data_vol)
+    
     d['texts'] = extracted_text1
     d['code'] = extracted_text2
-    d['images'] = extracted_text3
+    d['images'] = dict(extracted_text3)
+    #changes here
+    d["score"] = calculate_risk_score(d)
     return d
 
 
@@ -96,45 +100,69 @@ def download_all_objects(bucket_name, aws_access_key_id, aws_secret_access_key, 
 
 @app.post("/text")
 def analyze_text(text):
-    suppress_output()
-    model = GLiNER.from_pretrained("urchade/gliner_multi_pii-v1")
-    restore_output()
-    d = process_text(text, model)
-    data_vol=""
-    if(len(d)<=1):
-        data_vol="small"
-    elif(len(d)==2):
-        data_vol="medium"
-    else :
-        data_vol="large"
-    d["score"] = calculate_risk_score(data,data_vol)
-    return d
-    
-@app.post("sql")
-def get_database_as_text(host, dbname, user, password, query):
-    try:
-        connection = psycopg2.connect(
-            host=host,
-            dbname=dbname,
-            user=user,
-            password=password
-        )
-        cursor = connection.cursor()
-        cursor.execute(query)
-        rows = cursor.fetchall()
-        result = "\n".join([str(row) for row in rows])
-        cursor.close()
-        connection.close()
-        d = process_text(result, model)
-        data_vol=""
-        if(len(d)<=1):
-            data_vol="small"
-        elif(len(d)==2):
-            data_vol="medium"
-        else :
-            data_vol="large"
-        d["score"] = calculate_risk_score(data,data_vol)
-        return d
+    result = process_text(text, model)
+    d = result['text']
+    d2 = {}
+    d2["documents"] = d
+    data = {}
+    data["texts"] = d2
+    data["code"] = {}
+    data["images"] = {}
+    temp=data
+    temp["score"]=calculate_risk_score(data)
+    return temp
 
-    except Exception as e:
-        return f"An error occurred: {e}"
+    
+# @app.post("sql")
+# def get_database_as_text(host, dbname, user, password, query):
+#     try:
+#         connection = psycopg2.connect(
+#             host=host,
+#             dbname=dbname,
+#             user=user,
+#             password=password
+#         )
+#         cursor = connection.cursor()
+#         cursor.execute(query)
+#         rows = cursor.fetchall()
+#         result = "\n".join([str(row) for row in rows])
+#         cursor.close()
+#         connection.close()
+#         d = process_text(result, model)
+#         data_vol=""
+#         if(len(d)<=1):
+#             data_vol="small"
+#         elif(len(d)==2):
+#             data_vol="medium"
+#         else :
+#             data_vol="large"
+#         d["score"] = calculate_risk_score(data,data_vol)
+#         return d
+
+    # except Exception as e:
+    #     return f"An error occurred: {e}"
+@app.post("/sql")   
+def get_database_as_text(host,dbname,user,password):
+    print("Analyze PII route called")
+    mysql_table="documents"
+    mysql = host.split(":")
+    mysql_host = mysql[0]
+    mysql_port = mysql[1]
+    # Check if MySQL credentials are provided
+    engine = sqlalchemy.create_engine(f'mysql+pymysql://{user}:divy123%40@{mysql_host}:{mysql_port}/{dbname}')
+    conn = engine.connect()
+    df = pd.read_sql_table(mysql_table, conn)
+    text = df.to_string()
+    print("Data from MySQL table read successfully. Processing...")
+
+    result = process_text(text,model)
+    d = result['text']
+    d2 = {}
+    d2["documents"] = d
+    data = {}
+    data["texts"] = d2
+    data["code"] = {}
+    data["images"] = {}
+    temp=data
+    temp["score"]=calculate_risk_score(data)
+    return temp

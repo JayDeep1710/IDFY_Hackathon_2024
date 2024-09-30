@@ -13,6 +13,10 @@ from texts import *
 from visualize import *
 from code_text import *
 
+
+
+
+
 # Define different file extensions for each category
 doc_extensions = ['.txt','.doc', '.docx']
 image_extensions = ['.jpg', '.jpeg', '.png', '.gif']
@@ -50,7 +54,6 @@ def copy_files_by_extension(source_directory, doc_dest="Testing/text_files", ima
             if file.endswith(tuple(doc_extensions)):
                 shutil.copy(source_file_path, doc_dest)
                 # print(f"Copied {file} to {doc_dest}")
-
             elif file.endswith(tuple(image_extensions)):
                 shutil.copy(source_file_path, image_dest)
                 # print(f"Copied {file} to {image_dest}")
@@ -90,14 +93,15 @@ def predict_entities_in_chunks(model, extracted_text, labels, chunk_size=200):
         results.append(entities)
     return results
 
+
     
 
-def search(i):
+def search(i,model):
     if i==1:
         ###
         print("\033[32m Loading model... \033[0m")
         suppress_output()
-        model = GLiNER.from_pretrained("urchade/gliner_multi_pii-v1")
+       
         restore_output()
         print("\033[32m Model Loaded Sucessfully! \033[0m")
         print("\033[32m Searching for Personally Identifiable Information in Text files \033[0m")
@@ -130,24 +134,21 @@ def search(i):
             print(entity["text"], "=>", entity["label"])
             
     if i==5:
-        d = stats("archive/Aadhaar-1/Val")
+        d = stats("/Users/jaydeep/Desktop/IDFY_Hackathon_2024/Backend/Test")
         print(d)
     if i==7:
                 ###
         print("\033[32m Loading model... \033[0m")
-        suppress_output()
-        model = GLiNER.from_pretrained("urchade/gliner_multi_pii-v1")
-        restore_output()
         print("\033[32m Model Loaded Sucessfully! \033[0m")
         print("\033[32m Searching for Personally Identifiable Information in Text files \033[0m")
         extracted_text = " "
         ###Text extraction
-        extracted_text += read_text()
+        extracted_text += read_text(model)
         ###JSON extraction
-        extracted_text += read_json()
+        extracted_text += read_json(model)
         #passing the text in chunk size of 200
         results = predict_entities_in_chunks(model, extracted_text, labels, chunk_size=50)
-        d2 = stats("archive/Aadhaar-1/Val")
+        d2 = stats("/Users/jaydeep/Desktop/IDFY_Hackathon_2024/Backend/Test")
         d = format_results(results)
         print_dict_in_color(d)
         print_dict_in_color(d2)

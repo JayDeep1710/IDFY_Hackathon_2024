@@ -1,9 +1,9 @@
 import glob
 import os
-from docx import Document
+# from docx import Document
 
 
-labels = ["Date of Birth","credit card Number","API Key","Bank Account Number","aadhar number" ,"company", "booking number","age", "city", "country", "personally identifiable information", "driver licence", "person", "address", "email", "passport number", "Social Security Number", "phone number"]
+labels = ["aadhar number" ,"Date of Birth","credit card Number","API Key","Bank Account Number","company", "booking number","age", "city", "country", "personally identifiable information", "driver licence", "person", "address", "email", "passport number", "Social Security Number", "phone number"]
 
 
 
@@ -25,9 +25,11 @@ def format_results(results):
     return d
 
 
+
 def process_text(text, model):
     path_to_data = {}
     result = predict_entities_in_chunks(model,text,labels,chunk_size=200)
+    # result = model.predict_entities(text, labels)
     d = format_results(result)
     path_to_data["text"] = d
     return path_to_data
@@ -49,16 +51,16 @@ def read_text(model):
 
 
 #Read Docx files
-def read_docx(folder_path):
-    doc_files = glob.glob(os.path.join(folder_path, "*.docx"))  # Find all .docx files
-    text = ""
+# def read_docx(folder_path):
+#     doc_files = glob.glob(os.path.join(folder_path, "*.docx"))  # Find all .docx files
+#     text = ""
     
-    for doc_file in doc_files:
-        # Open and read the .docx file
-        doc = Document(doc_file)
-        for para in doc.paragraphs:
-            text += para.text + "\n"  # Append each paragraph's text to the text variable with a newline
+#     for doc_file in doc_files:
+#         # Open and read the .docx file
+#         doc = Document(doc_file)
+#         for para in doc.paragraphs:
+#             text += para.text + "\n"  # Append each paragraph's text to the text variable with a newline
     
-    return text
+#     return text
 
 
