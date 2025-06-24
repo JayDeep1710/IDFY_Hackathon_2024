@@ -14,7 +14,7 @@ This project offers accurate identification and classification of Personally Ide
 Currently We offer data ingestion from following data sources
 ├── AWS S3 Bucket  
 ├── SQL server
-├── Local Folder
+├── Local Folder(data can be in various formats like code,normal text...)
 └── Copy and Paste Text data
 
 We offer two interfaces
