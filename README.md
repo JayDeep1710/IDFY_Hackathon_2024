@@ -1,6 +1,6 @@
 # IDFY_Hackathon_2024
 # Project
-This projects offers accurate identification and classification of Personally Identifiable Information (PII) within diverse data repositories.
+This project offers accurate identification and classification of Personally Identifiable Information (PII) within diverse data repositories.
 |High Level Diagram|
 |---------------------|
 | ![WhatsApp Image 2024-09-15 at 21 08 51](https://github.com/user-attachments/assets/661f1ba8-9161-42fe-a5ff-dba105126b0e)|
